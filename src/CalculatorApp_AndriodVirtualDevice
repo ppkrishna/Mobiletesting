@@ -1,0 +1,86 @@
+package virtualDevice;
+
+import java.net.URL;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.remote.MobileCapabilityType;
+
+public class CalculatorApp_AndriodVirtualDevice {
+	
+	@Test
+	public void verifyAddTest() throws Exception
+	{
+		
+		AppiumDriver<MobileElement> driver;
+
+        String appiumServer = "http://localhost:4723/wd/hub";
+
+
+        DesiredCapabilities cap = new DesiredCapabilities();
+        
+        cap.setCapability("udid", "emulator-5554");                         //adb 
+        //cap.setCapability("platformName", "Android");
+        
+        cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        
+        
+        cap.setCapability("platformVersion", "34.0");
+                
+
+        //app2
+                //adb shell dumpsys window | find "mCurrentFocus"
+                
+                //cap.setCapability("appPackage", "com.google.android.calculator");
+                //cap.setCapability("appActivity", "com.android.calculator2.Calculator");
+                
+
+        
+       cap.setCapability("appPackage", "com.google.android.calculator");
+        cap.setCapability("appActivity", "com.android.calculator.Calculator");
+        
+
+driver = new AppiumDriver<MobileElement>(new URL(appiumServer), cap);
+Thread.sleep(3000);
+
+//click on 99
+/*driver.findElement(By.id("com.google.android.calculator:id/digit_9")).click();
+driver.findElement(By.id("digit_9")).click();
+
+
+
+//click on plus icon
+
+driver.findElement(By.id("op_add")).click();
+
+
+//click on 108
+driver.findElement(By.id("digit_1")).click();
+driver.findElement(By.id("digit_0")).click();
+driver.findElement(By.id("digit_8")).click();
+
+
+//click on equal icon
+
+driver.findElement(By.id("eq")).click();
+
+
+//get Result
+Thread.sleep(3000);
+String result = driver.findElement(By.id("result_final")).getText();
+
+System.out.println("Result : " + result);
+
+
+Assert.assertEquals(result, "207");
+*/
+
+	}
+}
+	
+
